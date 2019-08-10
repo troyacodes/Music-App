@@ -4,10 +4,16 @@ import './Track.css';
 
 class Track extends React.Component{
 
+    constructor(props){
+        super(props);
+    }
+
     renderAction = () => {
-        let signal = '';
-        this.props.isRemoval ? signal = '-' : signal = '+';
-        return <button className="Track-actions"> {signal} </button>
+        return this.props.isRemoval ? <button className="Track-actions" onClick={this.props.removeTrack}> - </button> : <button className="Track-actions" onClick={this.addTrack}> + </button>;
+     }
+
+     addTrack = () =>{
+         this.props.onAdd(this.props.track);
      }
    
     render(){
